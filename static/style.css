@@ -20,7 +20,7 @@ h1 {
     padding-bottom: 7px;
     padding-top: 1px;
     color: #f4f6f8;
-    box-shadow: -2px 4px 5px rgba(0,0, 0,1);
+    box-shadow: -2px 4px 5px rgba(0,0,0,1);
 }
 
 .task-list{

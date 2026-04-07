@@ -14,6 +14,7 @@ habit_id_counter = 1
 def home():
     return render_template("index.html", tasks=tasks, habits=habits)
 
+#new task
 @app.route("/add_task", methods=["POST"])
 def add_task():
     global task_id_counter
@@ -27,13 +28,7 @@ def add_task():
         task_id_counter += 1
     return redirect(url_for("home"))
 
-@app.route("/reset_tasks",methods=["POST"])
-def reset_tasks():
-    global tasks
-    tasks = []
-    task_id_counter = 1
-    return redirect(url_for("home"))
-
+#check-off tasks
 @app.route("/toggle_task/<int:task_id>", methods=["POST"])
 def toggle_task(task_id):
     for task in tasks:
@@ -42,6 +37,15 @@ def toggle_task(task_id):
             break
     return redirect(url_for("home"))
 
+#reset tasks
+@app.route("/reset_tasks",methods=["POST"])
+def reset_tasks():
+    global tasks
+    tasks = []
+    task_id_counter = 1
+    return redirect(url_for("home"))
+
+#new habit
 @app.route("/add_habit", methods=["POST"])
 def add_habit():
     global habit_id_counter
@@ -55,6 +59,7 @@ def add_habit():
         habit_id_counter += 1
     return redirect(url_for("home"))
 
+#habit pages
 @app.route("/habit/<int:habit_id>")
 def habit_detail(habit_id):
     habit = next((h for h in habits if h["id"] == habit_id), None)
@@ -62,5 +67,6 @@ def habit_detail(habit_id):
         return "Habit not found", 404
     return render_template("habit_detail.html", habit=habit)
 
+#main programme
 if __name__ == "__main__":
     app.run(debug=True)
