@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 
 app = Flask(__name__, template_folder="webpages")
@@ -74,6 +75,20 @@ def delete_habit(habit_id):
     global habits
     habits = [h for h in habits if h["id"] != habit_id]
     return redirect(url_for("home"))
+
+#habit timer
+@app.route("/save_session/<int:habit_id>", methods=["POST"])
+def save_session(habit_id):
+    #global habit
+    habit = next((h for h in habits if h["id"] == habit_id), None)
+    if habit:
+        time_spent = int(request.form.get("time", 0))
+        habit["history"].append({
+            "date":datetime.now().strftime("%Y-%m-%d"),
+            "time_spent": time_spent
+        }
+        )
+        return redirect(url_for("habit_detail", habit_id = habit_id))
 
 #main programme
 if __name__ == "__main__":

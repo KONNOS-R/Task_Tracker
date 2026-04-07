@@ -4,6 +4,42 @@
     <meta charset="UTF-8">
     <title>{{ habit.name }}</title>
     <link rel="stylesheet" href="../static/style.css">
+
+    <script>
+let seconds = 0;
+let interval = null;
+
+function updateDisplay() {
+    let hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+    let mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+    let secs = String(seconds % 60).padStart(2, '0');
+
+    document.getElementById("timer").innerText = `${hrs}:${mins}:${secs}`;
+}
+
+function startTimer() {
+    if (interval) return; // prevent multiple timers
+    interval = setInterval(() => {
+        seconds++;
+        updateDisplay();
+    }, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(interval);
+    interval = null;
+}
+
+function resetTimer() {
+    pauseTimer();
+    seconds = 0;
+    updateDisplay();
+}
+
+function saveTime() {
+    document.getElementById("timeInput").value = seconds;
+}
+</script>
 </head>
 <body>
     <div class="container">
@@ -11,11 +47,15 @@
 
         <section class="panel">
             <h2>Timer</h2>
-            <div id="timer">00:00:00</div>
+            <div id="timer" class="timer">00:00:00</div>
 
-            <button>Start</button>
-            <button>Pause</button>
-            <button>Reset</button>
+            <button onclick="startTimer()">Start</button>
+            <button onclick="pauseTimer()">Pause</button>
+            <button onclick="resetTimer()">Reset</button>
+
+            <form action="{{ url_for('save_session', habit_id=habit.id) }}" method="POST">
+                <button type="hidden" onclick="saveTime()">Save Session</button>
+            </form>
         </section>
 
         <section class="panel">
