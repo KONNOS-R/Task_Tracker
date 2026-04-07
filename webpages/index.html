@@ -53,8 +53,7 @@
                 <tbody>
                     {% for habit in habits %}
                     <tr>
-                        <td>{{ habit.name }}</td>
-                        <td><a href="{{ url_for('habit_detail', habit_id=habit.id) }}">View</a></td>
+                        <td><a class="habit-btn" href="{{ url_for('habit_detail', habit_id=habit.id) }}">{{ habit.name }}</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

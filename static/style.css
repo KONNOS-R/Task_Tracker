@@ -31,7 +31,20 @@ h1 {
     overflow: hidden;
 }
 
+.habit-btn{
+    text-decoration: none;
+    color: #3b65ff;
+}
 
+.habit-table {
+    text-align: center;
+    margin: auto;
+}
+
+.habit-table tr th{
+    padding-left: 60px;
+    padding-right: 60px;
+}
 
 
 
