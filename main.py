@@ -63,9 +63,17 @@ def add_habit():
 @app.route("/habit/<int:habit_id>")
 def habit_detail(habit_id):
     habit = next((h for h in habits if h["id"] == habit_id), None)
+
     if habit is None:
         return "Habit not found", 404
     return render_template("habit_detail.html", habit=habit)
+
+#delete habits
+@app.route("/delete_habit/<int:habit_id>", methods=["POST"])
+def delete_habit(habit_id):
+    global habits
+    habits = [h for h in habits if h["id"] != habit_id]
+    return redirect(url_for("home"))
 
 #main programme
 if __name__ == "__main__":
