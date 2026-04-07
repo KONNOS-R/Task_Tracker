@@ -82,18 +82,13 @@ def save_session(habit_id):
     #global habit
     habit = next((h for h in habits if h["id"] == habit_id), None)
     if habit:
-        time_spent = int(request.form.get("time", 0))
+        time_spent = int(request.form.get("time") or 0)
         habit["history"].append({
             "date":datetime.now().strftime("%Y-%m-%d"),
             "time_spent": time_spent
         }
         )
-        return redirect(url_for("habit_detail", habit_id = habit_id ))
-def format_time(sec):
-    hrs = sec//3600
-    mins = (sec %3600)// 60
-    secs = (sec % 3600) % 60
-    return f"{hrs:02d}:{mins:02d}:{secs:02d}"
+        return redirect(url_for("habit_detail", habit_id = habit_id))
 
 #main programme
 if __name__ == "__main__":
