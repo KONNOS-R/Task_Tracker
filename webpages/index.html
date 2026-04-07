@@ -25,7 +25,7 @@
                     <form action="{{ url_for('toggle_task', task_id=task.id) }}" method="POST">
                         <label>
                             <input type="checkbox" onchange="this.form.submit()" {% if task.done %}checked{% endif %}>
-                            <span class="{% if task.done %}done{% endif %}">{{ task.title }}</span>
+                            <abbr title="{{ task.title }}"><span class="{% if task.done %}done{% endif %}">{{ task.title }}</span></abbr>
                         </label>
                     </form>
                 </li>
