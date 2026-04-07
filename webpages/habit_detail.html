@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ habit.name }}</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ habit.name }}</h1>
+
+        <section class="panel">
+            <h2>Timer</h2>
+            <div id="timer">00:00:00</div>
+
+            <button>Start</button>
+            <button>Pause</button>
+            <button>Reset</button>
+        </section>
+
+        <section class="panel">
+            <h2>Past Data</h2>
+            <table class="habit-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time Spent</th>
+                        <th>Completion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in habit.history %}
+                    <tr>
+                        <td>{{ entry.date }}</td>
+                        <td>{{ entry.time_spent }}</td>
+                        <td>{{ entry.completed }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <a href="{{ url_for('home') }}">Back</a>
+    </div>
+</body>
+</html>
