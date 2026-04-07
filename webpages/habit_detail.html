@@ -54,7 +54,8 @@ function saveTime() {
             <button onclick="resetTimer()">Reset</button>
 
             <form action="{{ url_for('save_session', habit_id=habit.id) }}" method="POST">
-                <button type="hidden" onclick="saveTime()">Save Session</button>
+                <input type="hidden" name="time" id="timeInput">
+                <button type="submit" onclick="saveTime()">Save Session</button>
             </form>
         </section>
 
@@ -72,8 +73,7 @@ function saveTime() {
                     {% for entry in habit.history %}
                     <tr>
                         <td>{{ entry.date }}</td>
-                        <td>{{ entry.time_spent }}</td>
-                        <td>{{ entry.completed }}</td>
+                        <td>{{ format_time(entry.time_spent) }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

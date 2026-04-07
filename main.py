@@ -88,7 +88,12 @@ def save_session(habit_id):
             "time_spent": time_spent
         }
         )
-        return redirect(url_for("habit_detail", habit_id = habit_id))
+        return redirect(url_for("habit_detail", habit_id = habit_id ))
+def format_time(sec):
+    hrs = sec//3600
+    mins = (sec %3600)// 60
+    secs = (sec % 3600) % 60
+    return f"{hrs:02d}:{mins:02d}:{secs:02d}"
 
 #main programme
 if __name__ == "__main__":
