@@ -27,6 +27,13 @@ def add_task():
         task_id_counter += 1
     return redirect(url_for("home"))
 
+@app.route("/reset_tasks",methods=["POST"])
+def reset_tasks():
+    global tasks
+    tasks = []
+    task_id_counter = 1
+    return redirect(url_for("home"))
+
 @app.route("/toggle_task/<int:task_id>", methods=["POST"])
 def toggle_task(task_id):
     for task in tasks:

@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
+    <h1>Task Tracker</h1>
     <div class="container">
-        <h1>Task Tracker</h1>
-
         <section class="panel">
             <div class="panel-header">
                 <h2>Tasks</h2>
@@ -31,6 +30,10 @@
                 </li>
                 {% endfor %}
             </ul>
+
+            <form action="{{ url_for('reset_tasks') }}" method="POST" style = "display: inline;">
+                <button type="submit" class="delete-btn">Reset</button>
+            </form>
         </section>
 
         <section class="panel">
