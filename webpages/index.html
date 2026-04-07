@@ -12,7 +12,6 @@
         <section class="panel">
             <div class="panel-header">
                 <h2>Tasks</h2>
-                <button class="plus-btn" onclick="document.getElementById('task-form').style.display='block'">+</button>
             </div>
 
             <form id="task-form" action="{{ url_for('add_task') }}" method="POST" class="hidden-form">
@@ -37,8 +36,6 @@
         <section class="panel">
             <div class="panel-header">
                 <h2>Habits</h2>
-                <button class="plus-btn" onclick="document.getElementById('habit-form').style.display='block'">+</button>
-            </div>
 
             <form id="habit-form" action="{{ url_for('add_habit') }}" method="POST" class="hidden-form">
                 <input type="text" name="name" placeholder="New habit" required>
