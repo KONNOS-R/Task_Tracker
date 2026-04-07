@@ -8,3 +8,11 @@ h1 {
     color: #020011;
     margin-top: 25px;
 }
+
+section {
+    border-radius: 8px;
+    background: blue;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
