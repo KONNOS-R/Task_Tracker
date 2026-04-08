@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ habit.name }}</title>
+    <title>Task Tracker | {{ habit.name }}</title>
     <link rel="stylesheet" href="../static/style.css">
 
     <script>
@@ -47,7 +47,7 @@ function saveTime() {
 
         <section class="panel">
             <h2>Timer</h2>
-            <div id="timer" class="timer">00:00:00</div>
+            <div id="timer">00:00:00</div>
 
             <button onclick="startTimer()">Start</button>
             <button onclick="pauseTimer()">Pause</button>
@@ -72,7 +72,7 @@ function saveTime() {
                     {% for entry in habit.history %}
                     <tr>
                         <td>{{ entry.date }}</td>
-                        <td>{{ entry.time_spent }} sec</td>
+                        <td>{{ entry.time_spent }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
