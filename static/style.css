@@ -11,13 +11,15 @@ h1 {
 
 .panel {
     border-radius: 8px;
+    border-style: solid;
+    border-color:rgb(87, 77, 166);
     background: rgb(20, 20, 71);
     width: 50%;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
-    padding-bottom: 7px;
+    padding-bottom: 20px;
     padding-top: 1px;
     color: #f4f6f8;
     box-shadow: -2px 4px 5px rgba(0,0,0,1);
@@ -34,6 +36,36 @@ h1 {
 .habit-btn{
     text-decoration: none;
     color: #3b65ff;
+}
+
+.timer-btn{
+    color: #f4f6f8;
+    margin-top: 5px;
+    background-color: rgb(87, 77, 166);
+    border-radius: 5px;
+    border-color: rgb(87, 77, 166);
+}
+
+.timer-submit-btn{
+    color: #f4f6f8;
+    margin-top: 8px;
+    background-color: rgb(87, 77, 166);
+    border-radius: 5px;
+    border-color: rgb(87, 77, 166);
+}
+
+.delete-btn{
+    color: #ff1a1a;
+    background-color: rgb(87, 77, 166);
+    border-radius: 5px;
+    border-color: rgb(87, 77, 166);
+}
+
+.add-btn{
+    color: #f4f6f8;
+    background-color: rgb(87, 77, 166);
+    border-radius: 5px;
+    border-color: rgb(87, 77, 166);
 }
 
 .habit-table {

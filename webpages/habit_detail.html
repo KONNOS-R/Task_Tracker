@@ -49,18 +49,30 @@ function saveTime() {
             <h2>Timer</h2>
             <div id="timer">00:00:00</div>
 
-            <button onclick="startTimer()">Start</button>
-            <button onclick="pauseTimer()">Pause</button>
-            <button onclick="resetTimer()">Reset</button>
+            <button class="timer-btn" onclick="startTimer()">Start</button>
+            <button class="timer-btn" onclick="pauseTimer()">Pause</button>
+            <button class="timer-btn" onclick="resetTimer()">Reset</button>
 
             <form action="{{ url_for('save_session', habit_id=habit.id) }}" method="POST">
                 <input type="hidden" name="time" id="timeInput">
-                <button type="submit" onclick="saveTime()">Save Session</button>
+                <button class="timer-submit-btn" type="submit" onclick="saveTime()">Save Session</button>
             </form>
         </section>
 
         <section class="panel">
             <h2>Past Data</h2>
+            <table class="habit-table">
+                <tr>
+                    <th>
+                        Total Time Spent
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        {{ total_time_spent }}
+                    </td>
+                </tr>
+            </table>
             <table class="habit-table">
                 <thead>
                     <tr>

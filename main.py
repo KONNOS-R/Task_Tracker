@@ -65,9 +65,16 @@ def add_habit():
 def habit_detail(habit_id):
     habit = next((h for h in habits if h["id"] == habit_id), None)
 
+    total_time_spent = 0
+
+    x = [i["time_spent"] for i in habit["history"]]
+    for i in x:
+        hour, minute, second = i.split(":")
+        total_time_spent += int(hour)*3600 + int(minute)*60 + int(second)
+
     if habit is None:
         return "Habit not found", 404
-    return render_template("habit_detail.html", habit=habit)
+    return render_template("habit_detail.html", habit=habit, total_time_spent=format_time(total_time_spent))
 
 #delete habits
 @app.route("/delete_habit/<int:habit_id>", methods=["POST"])
