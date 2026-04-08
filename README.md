@@ -1,6 +1,6 @@
 Task Tracker
 
-A web-app to keep track of your tasks and habitS!
+A simple web-app to keep track of your tasks and habits!
 
 Main page:
 -You can create, check off and delete tasks in the 'Tasks' section of the main page.
@@ -9,3 +9,5 @@ Main page:
 Habits sub-pages:
 -You can track your time spent on a habit with the indicated buttons in the 'Timer' section of the subpages.
 -You can view past tracking data or delete the habit in the 'Past Data' section of the subpages.
+
+Hope you like it!
